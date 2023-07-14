@@ -76,7 +76,7 @@
     },
     {
       "inputs": [],
-      "name": "OnlySupernets2",
+      "name": "OnlyPolygonZkEVM",
       "type": "error"
     },
     {
@@ -546,7 +546,7 @@
       "name": "globalExitRootManager",
       "outputs": [
         {
-          "internalType": "contract IBaseSupernets2GlobalExitRoot",
+          "internalType": "contract IBasePolygonZkEVMGlobalExitRoot",
           "name": "",
           "type": "address"
         }
@@ -562,13 +562,13 @@
           "type": "uint32"
         },
         {
-          "internalType": "contract IBaseSupernets2GlobalExitRoot",
+          "internalType": "contract IBasePolygonZkEVMGlobalExitRoot",
           "name": "_globalExitRootManager",
           "type": "address"
         },
         {
           "internalType": "address",
-          "name": "_supernets2address",
+          "name": "_polygonZkEVMaddress",
           "type": "address"
         }
       ],
@@ -636,6 +636,19 @@
       "type": "function"
     },
     {
+      "inputs": [],
+      "name": "polygonZkEVMaddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [
         {
           "internalType": "uint32",
@@ -664,19 +677,6 @@
         }
       ],
       "name": "precalculatedWrapperAddress",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "supernets2address",
       "outputs": [
         {
           "internalType": "address",

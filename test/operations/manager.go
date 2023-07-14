@@ -217,6 +217,13 @@ func ApplyL2Txs(ctx context.Context, txs []*types.Transaction, auth *bind.Transa
 		}
 	}
 	waitToBeMined := confirmationLevel != PoolConfirmationLevel
+	var initialNonce uint64
+	if waitToBeMined {
+		initialNonce, err = client.NonceAt(ctx, auth.From, nil)
+		if err != nil {
+			return nil, err
+		}
+	}
 	sentTxs, err := applyTxs(ctx, txs, auth, client, waitToBeMined)
 	if err != nil {
 		return nil, err
@@ -226,7 +233,7 @@ func ApplyL2Txs(ctx context.Context, txs []*types.Transaction, auth *bind.Transa
 	}
 
 	l2BlockNumbers := make([]*big.Int, 0, len(sentTxs))
-	for _, tx := range sentTxs {
+	for i, tx := range sentTxs {
 		// check transaction nonce against transaction reported L2 block number
 		receipt, err := client.TransactionReceipt(ctx, tx.Hash())
 		if err != nil {
@@ -235,7 +242,7 @@ func ApplyL2Txs(ctx context.Context, txs []*types.Transaction, auth *bind.Transa
 
 		// get L2 block number
 		l2BlockNumbers = append(l2BlockNumbers, receipt.BlockNumber)
-		expectedNonce := receipt.BlockNumber.Uint64() - 1 + 8 //nolint:gomnd
+		expectedNonce := initialNonce + uint64(i)
 		if tx.Nonce() != expectedNonce {
 			return nil, fmt.Errorf("mismatching nonce for tx %v: want %d, got %d\n", tx.Hash(), expectedNonce, tx.Nonce())
 		}

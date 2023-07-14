@@ -17,9 +17,9 @@ import (
 	"github.com/0xPolygon/supernets2-node/etherman/etherscan"
 	"github.com/0xPolygon/supernets2-node/etherman/ethgasstation"
 	"github.com/0xPolygon/supernets2-node/etherman/smartcontracts/matic"
+	"github.com/0xPolygon/supernets2-node/etherman/smartcontracts/polygonzkevmglobalexitroot"
 	"github.com/0xPolygon/supernets2-node/etherman/smartcontracts/supernets2"
 	"github.com/0xPolygon/supernets2-node/etherman/smartcontracts/supernets2datacommittee"
-	"github.com/0xPolygon/supernets2-node/etherman/smartcontracts/supernets2globalexitroot"
 	ethmanTypes "github.com/0xPolygon/supernets2-node/etherman/types"
 	"github.com/0xPolygon/supernets2-node/log"
 	"github.com/0xPolygon/supernets2-node/state"
@@ -132,7 +132,7 @@ type externalGasProviders struct {
 type Client struct {
 	EthClient             ethereumClient
 	Supernets2            *supernets2.Supernets2
-	GlobalExitRootManager *supernets2globalexitroot.Supernets2globalexitroot
+	GlobalExitRootManager *polygonzkevmglobalexitroot.Polygonzkevmglobalexitroot
 	Matic                 *matic.Matic
 	DataCommittee         *supernets2datacommittee.Supernets2datacommittee
 	SCAddresses           []common.Address
@@ -156,7 +156,7 @@ func NewClient(cfg Config, l1Config L1Config) (*Client, error) {
 	if err != nil {
 		return nil, err
 	}
-	globalExitRoot, err := supernets2globalexitroot.NewSupernets2globalexitroot(l1Config.GlobalExitRootManagerAddr, ethClient)
+	globalExitRoot, err := polygonzkevmglobalexitroot.NewPolygonzkevmglobalexitroot(l1Config.GlobalExitRootManagerAddr, ethClient)
 	if err != nil {
 		return nil, err
 	}
