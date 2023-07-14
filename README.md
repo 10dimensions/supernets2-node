@@ -107,6 +107,7 @@ It's recommended to use `make` for building, and testing the code, ... Run `make
 
 - [Running locally](docs/running_local.md)
 - [Running on production](docs/production-setup.md)
+- Kill node `docker ps -aq | xargs docker stop | xargs docker rm`
 
 ### Requirements
 

@@ -1,0 +1,62 @@
+docker-compose up -d
+WARNING: The DOCKERGID variable is not set. Defaulting to a blank string.
+Creating supernets2-eth-tx-manager ... 
+Creating supernets2-pool-db        ... 
+Creating supernets2-explorer-l1    ... 
+Creating supernets2-state-db       ... 
+Creating supernets2-explorer-l1-db ... 
+Creating supernets2-metrics        ... 
+Creating supernets2-data-availability-db ... 
+Creating zkprover-mock                   ... 
+Creating supernets2-aggregator           ... 
+Creating supernets2-sequencer            ... 
+Creating supernets2-sync                 ... 
+Creating supernets2-l2gaspricer                    ... done
+Creating supernets2-permissionless-prover ... 
+Creating grafana-db                       ... 
+Creating supernets2-json-rpc              ... 
+Creating supernets2-data-availability-db           ... done
+Creating supernets2-event-db                       ... error
+Creating grafana-db                                ... done
+Creating supernets2-permissionless-db              ... 
+Creating zkprover-mock                             ... error
+Creating supernets2-mock-l1-network                ... 
+Creating supernets2-sequence-sender                ... 
+Creating supernets2-sequencer                      ... done
+Creating supernets2-permissionless-prover          ... done
+Creating supernets2-explorer-json-rpc              ... 
+Creating supernets2-json-rpc                       ... done
+Creating supernets2-permissionless-db              ... done
+
+ERROR: for supernets2-event-db  Cannot start service supernets2-event-db: driver failed programming external connectivity on endpoint supernets2-event-db (1dc00
+Creating supernets2-sequence-sender                ... done
+Creating supernets2-permissionless-node            ... error
+Creating supernets2-mock-l1-network                ... done
+ERROR: for supernets2-permissionless-node  Cannot start service supernets2-permissionless-node: driver failed programming external connectivity on endpoint supe
+Creating supernets2-prover                         ... done
+
+Creating supernets2-explorer-json-rpc              ... doneer process: exec: "/app/zkprover-mock": stat /app/zkprover-mock: no such file or directory: unknown
+Creating telegraf                                  ... error
+
+ERROR: for telegraf  Cannot start service telegraf: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error mounting "/workspaces/supernets2-node/config/telegraf.conf" to rootfs at "/etc/telegraf/telegraf.conf": mount /workspaces/supernets2-node/config/telegraf.conf:/etc/telegraf/telegraf.conf (via /proc/self/fd/6), flags: 0x5001: not a directory: unknown: Are you trying to mount a directory onto a file (or vice-versa)? Check if the specified host path exists and is the expected type
+
+ERROR: for supernets2-event-db  Cannot start service supernets2-event-db: driver failed programming external connectivity on endpoint supernets2-event-db (1dc009e86b1a4e3f381eea167502906d49d0d27d393b8b28185cc445add46ccd): Bind for 0.0.0.0:5435 failed: port is already allocated
+
+ERROR: for supernets2-permissionless-node  Cannot start service supernets2-permissionless-node: driver failed programming external connectivity on endpoint supernets2-permissionless-node (230282b476ffc9c1b3699b593d72329aea828d4bc0200f1dd29de4945cd0653d): Bind for 0.0.0.0:8125 failed: port is already allocated
+
+ERROR: for zkprover-mock  Cannot start service zkprover-mock: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: exec: "/app/zkprover-mock": stat /app/zkprover-mock: no such file or directory: unknown
+
+ERROR: for telegraf  Cannot start service telegraf: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error mounting "/workspaces/supernets2-node/config/telegraf.conf" to rootfs at "/etc/telegraf/telegraf.conf": mount /workspaces/supernets2-node/config/telegraf.conf:/etc/telegraf/telegraf.conf (via /proc/self/fd/6), flags: 0x5001: not a directory: unknown: Are you trying to mount a directory onto a file (or vice-versa)? Check if the specified host path exists and is the expected type
+ERROR: Encountered errors while bringing up the project.
+@10dimensions ➜ /workspaces/supernets2-node (main) $ docker ps
+CONTAINER ID   IMAGE                                            COMMAND                  CREATED          STATUS                             PORTS                                                                                 NAMES
+ffc8a5ed0280   hermeznetwork/geth-supernets2-contracts:v0.0.1   "geth --http --http.…"   34 seconds ago   Up 17 seconds                      0.0.0.0:8545-8546->8545-8546/tcp, :::8545-8546->8545-8546/tcp, 30303/tcp, 30303/udp   supernets2-mock-l1-network
+7f16ec9149cc   postgres                                         "docker-entrypoint.s…"   34 seconds ago   Up 20 seconds                      0.0.0.0:5436->5432/tcp, :::5436->5432/tcp                                             supernets2-explorer-l2-db
+2e0d658ccb59   postgres                                         "docker-entrypoint.s…"   34 seconds ago   Up 24 seconds                      5432/tcp                                                                              grafana-db
+56603f661737   hermeznetwork/zkevm-explorer:latest              "/bin/sh -c 'mix do …"   34 seconds ago   Up 25 seconds                      0.0.0.0:4001->4000/tcp, :::4001->4000/tcp                                             supernets2-explorer-l2
+daa8e541a932   prom/prometheus:v2.39.1                          "/bin/prometheus --c…"   34 seconds ago   Up Less than a second              0.0.0.0:9090->9090/tcp, :::9090->9090/tcp                                             supernets2-metrics
+a15ebd8987ef   postgres                                         "docker-entrypoint.s…"   34 seconds ago   Up 24 seconds (health: starting)   0.0.0.0:5444->5432/tcp, :::5444->5432/tcp                                             supernets2-data-availability-db
+04026d87382d   postgres                                         "docker-entrypoint.s…"   34 seconds ago   Up 26 seconds                      0.0.0.0:5435->5432/tcp, :::5435->5432/tcp                                             supernets2-explorer-l1-db
+2a4414619b3c   hermeznetwork/zkevm-explorer:latest              "/bin/sh -c 'mix do …"   34 seconds ago   Up 30 seconds                      0.0.0.0:4000->4000/tcp, :::4000->4000/tcp                                             supernets2-explorer-l1
+08284ce773f6   postgres                                         "docker-entrypoint.s…"   34 seconds ago   Up 32 seconds                      0.0.0.0:5433->5432/tcp, :::5433->5432/tcp                                             supernets2-pool-db
+@10dimensions ➜ /workspaces/supernets2-node (main) $ 

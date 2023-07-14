@@ -1,0 +1,67 @@
+digraph "docker-compose" {
+	graph [fontcolor="#2D3436" fontname="Sans-Serif" fontsize=15 label="docker-compose" nodesep=1.2 pad=2.0 rankdir=TB ranksep=0.75 splines=ortho]
+	node [fixedsize=true fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13 height=1.4 imagescale=true labelloc=b shape=box style=rounded width=1.4]
+	edge [color="#7B8894"]
+	"1b4f1245fbf54dc89954218862368a15" -> b06bdfc505f0472c95cd1776a51baa5b [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	b06bdfc505f0472c95cd1776a51baa5b -> c8117bbe6dc249b1a5b75782ba86552a [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	b06bdfc505f0472c95cd1776a51baa5b -> "2a24709019f14e3e96e28d212ffebb53" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	subgraph "cluster_docker-compose.yml" {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label="docker-compose.yml" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		"1b4f1245fbf54dc89954218862368a15" [label=grafana
+ height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		b06bdfc505f0472c95cd1776a51baa5b [label=telegraf
+ height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		c8117bbe6dc249b1a5b75782ba86552a [label="grafana-db
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		c5a1418ed7154bcbac7b742355ae98ee [label="supernets2-sequencer
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		"2fc8625fc233417eafe2e2b91f951d94" [label="supernets2-sequence-sender
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		"2a24709019f14e3e96e28d212ffebb53" [label="supernets2-json-rpc
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		"169b029b662d48c69030189d3969fde1" [label="supernets2-aggregator
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		"5485859a9efc47f9ab9a1774bf5c6515" [label="supernets2-sync
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		"8c4b6176cbc541b0ab397657017eb902" [label="supernets2-eth-tx-manager
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		"3bf942bc8f38487b8a1c0e99df61a33a" [label="supernets2-l2gaspricer
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		cadaa85184ee4f60bfddf650e824dfc5 [label="supernets2-state-db
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		d02b405a6a474452b8cf94eba2ab3867 [label="supernets2-pool-db
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		"63eca545190f473089218a1b0d421791" [label="supernets2-event-db
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		a366c32d4984436ebee87e7d62818ca6 [label="supernets2-explorer-l1
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		"573017d693b445418ab2e33d16c0b272" [label="supernets2-explorer-l1-db
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		"1203d37306754e56819661beaec3cb3c" [label="supernets2-explorer-l2
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		"63aed23074b1464bb12ecc4edb645ac6" [label="supernets2-explorer-json-rpc
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		b6607111d75e4e1fa360b72b0e376078 [label="supernets2-explorer-l2-db
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		"6aa484684d4c4a4ea50444bda526e2b9" [label="supernets2-mock-l1-network
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		"09634ad685114456bbbbab18c4113a10" [label="supernets2-prover
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		"88e56793cb8a47049546ef0ae1f59a2b" [label="zkprover-mock
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		ff4c442d4f4d4fccbb4406f48a264644 [label="supernets2-approve
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		"7f60b9c6341e4e8394dfd4b86050f469" [label="supernets2-permissionless-db
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		a8e7824694c74b508c3d35b465c4bb0d [label="supernets2-permissionless-node
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		"831e107509d344a9a7bfa059fbba7250" [label="supernets2-permissionless-node-forced-DAC
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		"3248ec0b9b5049f4b9279ec8726a8f70" [label="supernets2-permissionless-prover
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		e4b8677e16744fe18c642be8765e4140 [label="supernets2-metrics
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+		"0e84180e8120412487fa8d9a3f3b2eac" [label="supernets2-data-availability-db
+" height=2.3 image="/usr/local/python/3.10.8/lib/python3.10/site-packages/resources/generic/compute/rack.png" shape=none]
+	}
+}
