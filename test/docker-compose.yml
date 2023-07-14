@@ -356,8 +356,7 @@ services:
     volumes:
       - ./vectors/src:/app/testvectors
     command: >
-      zkProver -c /usr/src/app/config.json
-  #/app/zkprover-mock server --statedb-port 43061 --executor-port 43071 --test-vector-path /app/testvectors
+      /app/zkprover-mock server --statedb-port 43061 --executor-port 43071 --test-vector-path /app/testvectors
 
   supernets2-approve:
     container_name: supernets2-approve
