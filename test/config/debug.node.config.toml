@@ -15,7 +15,6 @@ EnableLog = true
 MaxConns = 10
 
 [Pool]
-FreeClaimGasLimit = 1500000
 IntervalToRefreshBlockedAddresses = "5m"
 MaxTxBytesSize=30132
 MaxTxDataBytesSize=30000

@@ -8,8 +8,8 @@ import (
 
 	"github.com/ethereum/go-ethereum/core/types"
 
+	"github.com/0xPolygon/supernets2-node/etherman/smartcontracts/polygonzkevmglobalexitroot"
 	"github.com/0xPolygon/supernets2-node/etherman/smartcontracts/supernets2"
-	"github.com/0xPolygon/supernets2-node/etherman/smartcontracts/supernets2globalexitroot"
 	"github.com/0xPolygon/supernets2-node/log"
 	"github.com/0xPolygon/supernets2-node/state"
 	"github.com/0xPolygon/supernets2-node/test/constants"
@@ -145,7 +145,7 @@ func sendForcedBatch(t *testing.T, txs []byte, opsman *operations.Manager) (*sta
 	managerAddress, err := supernets2.GlobalExitRootManager(&bind.CallOpts{Pending: false})
 	require.NoError(t, err)
 
-	manager, err := supernets2globalexitroot.NewSupernets2globalexitroot(managerAddress, ethClient)
+	manager, err := polygonzkevmglobalexitroot.NewPolygonzkevmglobalexitroot(managerAddress, ethClient)
 	require.NoError(t, err)
 
 	rootInContract, err := manager.GetLastGlobalExitRoot(&bind.CallOpts{Pending: false})

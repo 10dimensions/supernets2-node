@@ -59,6 +59,7 @@ func NewPool(cfg Config, s storage, st stateInterface, l2BridgeAddr common.Addre
 		state:                   st,
 		chainID:                 chainID,
 		blockedAddresses:        sync.Map{},
+		minSuggestedGasPrice:    big.NewInt(int64(cfg.DefaultMinGasPriceAllowed)),
 		minSuggestedGasPriceMux: new(sync.RWMutex),
 		eventLog:                eventLog,
 	}

@@ -9,8 +9,8 @@ gen() {
 }
 
 gen supernets2
-gen supernets2bridge
+gen polygonzkevmbridge
 gen matic
 gen mockverifier
-gen supernets2globalexitroot
+gen polygonzkevmglobalexitroot
 gen supernets2datacommittee

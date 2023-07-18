@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
+	"github.com/0xPolygon/supernets2-node/etherman/smartcontracts/polygonzkevmbridge"
 	"github.com/0xPolygon/supernets2-node/etherman/smartcontracts/supernets2"
-	"github.com/0xPolygon/supernets2-node/etherman/smartcontracts/supernets2bridge"
 	"github.com/0xPolygon/supernets2-node/etherman/smartcontracts/supernets2datacommittee"
 	ethmanTypes "github.com/0xPolygon/supernets2-node/etherman/types"
 	"github.com/0xPolygon/supernets2-node/log"
@@ -38,7 +38,7 @@ func newTestingEnv() (
 	ethBackend *backends.SimulatedBackend,
 	auth *bind.TransactOpts,
 	maticAddr common.Address,
-	br *supernets2bridge.Supernets2bridge,
+	br *polygonzkevmbridge.Polygonzkevmbridge,
 	da *supernets2datacommittee.Supernets2datacommittee,
 ) {
 	privateKey, err := crypto.GenerateKey()

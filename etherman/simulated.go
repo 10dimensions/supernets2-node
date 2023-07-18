@@ -7,10 +7,10 @@ import (
 
 	"github.com/0xPolygon/supernets2-node/etherman/smartcontracts/matic"
 	"github.com/0xPolygon/supernets2-node/etherman/smartcontracts/mockverifier"
+	"github.com/0xPolygon/supernets2-node/etherman/smartcontracts/polygonzkevmbridge"
+	"github.com/0xPolygon/supernets2-node/etherman/smartcontracts/polygonzkevmglobalexitroot"
 	"github.com/0xPolygon/supernets2-node/etherman/smartcontracts/supernets2"
-	"github.com/0xPolygon/supernets2-node/etherman/smartcontracts/supernets2bridge"
 	"github.com/0xPolygon/supernets2-node/etherman/smartcontracts/supernets2datacommittee"
-	"github.com/0xPolygon/supernets2-node/etherman/smartcontracts/supernets2globalexitroot"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind/backends"
 	"github.com/ethereum/go-ethereum/common"
@@ -24,7 +24,7 @@ func NewSimulatedEtherman(cfg Config, auth *bind.TransactOpts) (
 	etherman *Client,
 	ethBackend *backends.SimulatedBackend,
 	maticAddr common.Address,
-	br *supernets2bridge.Supernets2bridge,
+	br *polygonzkevmbridge.Polygonzkevmbridge,
 	da *supernets2datacommittee.Supernets2datacommittee,
 	err error,
 ) {
@@ -77,11 +77,11 @@ func NewSimulatedEtherman(cfg Config, auth *bind.TransactOpts) (
 	const posPoE = 2
 	calculatedPoEAddr := crypto.CreateAddress(auth.From, nonce+posPoE)
 	genesis := common.HexToHash("0xfd3434cd8f67e59d73488a2b8da242dd1f02849ea5dd99f0ca22c836c3d5b4a9") // Random value. Needs to be different to 0x0
-	exitManagerAddr, _, globalExitRoot, err := supernets2globalexitroot.DeploySupernets2globalexitroot(auth, client, calculatedPoEAddr, calculatedBridgeAddr)
+	exitManagerAddr, _, globalExitRoot, err := polygonzkevmglobalexitroot.DeployPolygonzkevmglobalexitroot(auth, client, calculatedPoEAddr, calculatedBridgeAddr)
 	if err != nil {
 		return nil, nil, common.Address{}, nil, nil, err
 	}
-	bridgeAddr, _, br, err := supernets2bridge.DeploySupernets2bridge(auth, client)
+	bridgeAddr, _, br, err := polygonzkevmbridge.DeployPolygonzkevmbridge(auth, client)
 	if err != nil {
 		return nil, nil, common.Address{}, nil, nil, err
 	}
