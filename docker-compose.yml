@@ -170,7 +170,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ../db/scripts/init_prover_db.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db/scripts/init_prover_db.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       - POSTGRES_USER=state_user
       - POSTGRES_PASSWORD=state_password
@@ -212,7 +212,7 @@ services:
     ports:
       - 5437:5432
     volumes:
-      - ../db/scripts/init_event_db.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db/scripts/init_event_db.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       - POSTGRES_USER=event_user
       - POSTGRES_PASSWORD=event_password
@@ -386,7 +386,7 @@ services:
     ports:
       - 5434:5432
     volumes:
-      - ../db/scripts/single_db_server.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db/scripts/single_db_server.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       - POSTGRES_USER=test_user
       - POSTGRES_PASSWORD=test_password
@@ -413,8 +413,8 @@ services:
       - SUPERNETS2_NODE_POOL_DB_HOST=supernets2-permissionless-db
       - SUPERNETS2_NODE_RPC_PORT=8125
       - SUPERNETS2_NODE_RPC_SEQUENCERNODEURI=http://supernets2-json-rpc:8123
-      - SUPERNETS2_NODE_MTCLIENT_URI=supernets2-permissionless-prover:50061
-      - SUPERNETS2_NODE_EXECUTOR_URI=supernets2-permissionless-prover:50071
+      - SUPERNETS2_NODE_MTCLIENT_URI=supernets2-permissionless-prover:50068
+      - SUPERNETS2_NODE_EXECUTOR_URI=supernets2-permissionless-prover:50078
     volumes:
       - ./config/test.node.config.toml:/app/config.toml
       - ./config/test.genesis.config.json:/app/genesis.json
@@ -442,8 +442,8 @@ services:
       - SUPERNETS2_NODE_RPC_PORT=8125
       - SUPERNETS2_NODE_RPC_SEQUENCERNODEURI=http://supernets2-json-rpc:8123
       - SUPERNETS2_NODE_SYNCHRONIZER_TRUSTEDSEQUENCERURL=http://you-cant-touch-this:8123
-      - SUPERNETS2_NODE_MTCLIENT_URI=supernets2-permissionless-prover:50061
-      - SUPERNETS2_NODE_EXECUTOR_URI=supernets2-permissionless-prover:50071
+      - SUPERNETS2_NODE_MTCLIENT_URI=supernets2-permissionless-prover:50068
+      - SUPERNETS2_NODE_EXECUTOR_URI=supernets2-permissionless-prover:50078
     volumes:
       - ./config/test.node.config.toml:/app/config.toml
       - ./config/test.genesis.config.json:/app/genesis.json
@@ -475,7 +475,7 @@ services:
       - --config.file=/etc/prometheus/prometheus.yml
       - --web.enable-lifecycle
     volumes:
-      - ../config/metrics/prometheus:/etc/prometheus
+      - ./config/metrics/prometheus:/etc/prometheus
 
   supernets2-data-availability-db:
     container_name: supernets2-data-availability-db
