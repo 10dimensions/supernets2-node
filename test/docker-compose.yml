@@ -210,7 +210,7 @@ services:
         reservations:
           memory: 1G
     ports:
-      - 5435:5432
+      - 5431:5432
     volumes:
       - ../db/scripts/init_event_db.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
@@ -224,7 +224,7 @@ services:
 
   supernets2-explorer-l1:
     container_name: supernets2-explorer-l1
-    image: hermeznetwork/hermez-node-blockscout:latest
+    image: hermeznetwork/zkevm-explorer:latest
     ports:
       - 4000:4000
     environment:
@@ -257,7 +257,7 @@ services:
 
   supernets2-explorer-l2:
     container_name: supernets2-explorer-l2
-    image: hermeznetwork/hermez-node-blockscout:latest
+    image: hermeznetwork/zkevm-explorer:latest
     ports:
       - 4001:4000
     environment:
@@ -347,16 +347,16 @@ services:
     command: >
       zkProver -c /usr/src/app/config.json
 
-  zkprover-mock:
-    container_name: zkprover-mock
-    image: hermeznetwork/zkprover-mock:latest
-    ports:
-      - 43061:43061 # MT
-      - 43071:43071 # Executor
-    volumes:
-      - ./vectors/src:/app/testvectors
-    command: >
-      /app/zkprover-mock server --statedb-port 43061 --executor-port 43071 --test-vector-path /app/testvectors
+  # zkprover-mock:
+  #   container_name: zkprover-mock
+  #   image: hermeznetwork/zkprover-mock:latest
+  #   ports:
+  #     - 43061:43061 # MT
+  #     - 43071:43071 # Executor
+  #   volumes:
+  #     - ./vectors/src:/app/testvectors
+  #   command: >
+  #     /app/zkprover-mock server --statedb-port 43061 --executor-port 43071 --test-vector-path /app/testvectors
 
   supernets2-approve:
     container_name: supernets2-approve
@@ -398,7 +398,7 @@ services:
     container_name: supernets2-permissionless-node-forced-DAC
     image: supernets2-node
     ports:
-      - 8125:8125
+      - 8126:8125
     environment:
       - SUPERNETS2_NODE_ISTRUSTEDSEQUENCER=false
       - SUPERNETS2_NODE_STATEDB_USER=test_user
